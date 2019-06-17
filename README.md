@@ -14,6 +14,9 @@ Install
 
 Usage
 
+        calDateCalFormat = SimpleDateFormat("d MMMM yyyy", Locale("th", "TH"))
+        calDateDateFormat = SimpleDateFormat("EE", Locale("th", "TH"))
+        
         val fm = CalenDate(object : CalenDate.OnSelected {
                   override fun selected(data: DateItemModel) {
                       Log.d("MainActivity", Date(data.data).toString())
