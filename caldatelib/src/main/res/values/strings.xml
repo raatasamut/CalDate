@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CalDate</string>
+    <string name="title_activity_cal_tab_view">CalTabView</string>
+</resources>
