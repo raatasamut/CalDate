@@ -87,8 +87,9 @@ class CalenDate(val callback: OnSelected) : Fragment() {
             if (cp.get(Calendar.YEAR) == selectCal.get(Calendar.YEAR) &&
                 cp.get(Calendar.MONTH) == selectCal.get(Calendar.MONTH)
             ) {
-                selectCal = Calendar.getInstance(Locale.getDefault())
-
+                if (cp.get(Calendar.DATE) > selectCal.get(Calendar.DATE)) {
+                    selectCal = Calendar.getInstance(Locale.getDefault())
+                }
                 rootView.calen_date_main_view_previous_month.visibility = View.INVISIBLE
             } else
                 rootView.calen_date_main_view_previous_month.visibility = View.VISIBLE
@@ -166,7 +167,6 @@ class CalenDate(val callback: OnSelected) : Fragment() {
     }
 
     fun setMonth() {
-
         if (useBuddhistYear) {
             val tmp = Calendar.getInstance()
             tmp.set(Calendar.YEAR, selectCal.get(Calendar.YEAR) + 543)

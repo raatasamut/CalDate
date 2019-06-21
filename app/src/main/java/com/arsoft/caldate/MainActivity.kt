@@ -29,6 +29,9 @@ class MainActivity : FragmentActivity() {
                     Log.d("MainActivity", Date(data.data).toString())
                 }
             }).apply {
+
+                selectCal.timeInMillis = 1561420308000
+
                 pastSelectAble = true
                 useBuddhistYear = true
 
