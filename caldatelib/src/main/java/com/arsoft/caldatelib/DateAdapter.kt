@@ -57,7 +57,9 @@ class DateAdapter(
 
             if (isFromToday && cp.time.after(Date(it.data))) {
                 disabledDateCell?.DCView(
-                    holder.v.calen_date_main_view_date_item_cv,
+                    holder.v.calen_date_main_view_date_item_cv.apply {
+                        tag = it
+                    },
                     holder.v.calen_date_main_view_date_item_tv,
                     holder.v.calen_date_main_view_date_item_tv_date
                 )
@@ -67,7 +69,9 @@ class DateAdapter(
                 }
 
                 (if (it.selected) viewCallback else inActiveViewCallback)?.DCView(
-                    holder.v.calen_date_main_view_date_item_cv,
+                    holder.v.calen_date_main_view_date_item_cv.apply {
+                        tag = it
+                    },
                     holder.v.calen_date_main_view_date_item_tv,
                     holder.v.calen_date_main_view_date_item_tv_date
                 )

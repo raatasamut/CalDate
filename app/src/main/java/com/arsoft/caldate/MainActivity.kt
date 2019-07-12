@@ -11,6 +11,7 @@ import com.arsoft.caldatelib.CalenDate
 import com.arsoft.caldatelib.CalenDate.Companion.calDateCalFormat
 import com.arsoft.caldatelib.CalenDate.Companion.calDateDateFormat
 import com.arsoft.caldatelib.DateItemModel
+import com.arsoft.caldatelib.isToday
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -52,6 +53,9 @@ class MainActivity : FragmentActivity() {
                 }
                 dateCell = object : CalenDate.DateCell {
                     override fun DCView(card: androidx.cardview.widget.CardView, date: TextView, day: TextView) {
+
+                        Log.d("TEST dateCell", calDateCalFormat.format(Date((card.tag as DateItemModel).data)))
+
                         card.apply {
                             setCardBackgroundColor(Color.parseColor("#74b566"))
                         }
@@ -68,8 +72,12 @@ class MainActivity : FragmentActivity() {
                 }
                 inActiveDateCell = object : CalenDate.DateCell {
                     override fun DCView(card: androidx.cardview.widget.CardView, date: TextView, day: TextView) {
+
+                        Log.d("TEST inActiveDateCell", calDateCalFormat.format(Date((card.tag as DateItemModel).data)))
+
                         card.apply {
-                            setCardBackgroundColor(Color.parseColor("#FFFFFF"))
+                            setCardBackgroundColor(
+                                Color.parseColor(if(Date((card.tag as DateItemModel).data).isToday()) "#FF00FF" else "#FFFFFF"))
                         }
                         date.apply {
                             setTextColor(Color.parseColor("#000000"))
@@ -84,6 +92,9 @@ class MainActivity : FragmentActivity() {
                 }
                 disabledDateCell = object : CalenDate.DateCell {
                     override fun DCView(card: androidx.cardview.widget.CardView, date: TextView, day: TextView) {
+
+                        Log.d("TEST disabledDateCell", calDateCalFormat.format(Date((card.tag as DateItemModel).data)))
+
                         card.apply {
                             setCardBackgroundColor(Color.parseColor("#c9d6e3"))
                         }
